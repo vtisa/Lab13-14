@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Acceso Denegado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .error-page {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            text-align: center;
+        }
+
+        h2 {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        p {
+            color: #6c757d;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-primary:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-page">
+            <h2 class="mb-4">Acceso Denegado</h2>
+            <p th:if="${#authorization.expression('hasRole(''ADMIN'')') == false}">
+                Lo sentimos, necesitas ser un administrador para acceder a esta página.
+            </p>
+            <p th:unless="${#authorization.expression('hasRole(''ADMIN'')')}">
+                Lo sentimos, no tienes permiso para acceder a esta página.
+            </p>
+            <p>Si crees que esto es un error, por favor, contacta con el administrador.</p>
+            <a href="/listar" class="btn btn-primary">Volver al inicio</a>
+        </div>
+    </div>
+</body>
+</html>

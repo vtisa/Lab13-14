@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mensaje de respuesta</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{styles1.css}" />
+</head>
+
+<body>
+    <div th:if="${message}" th:classappend="${messageType == 'success'} ? 'success-message' : 'error-message'">
+        <p th:text="${message}"></p>
+    </div>
+</body>
+</html>
